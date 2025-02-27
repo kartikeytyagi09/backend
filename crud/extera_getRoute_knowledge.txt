@@ -1,0 +1,15 @@
+✅ Example:
+GET /users?firstName=Kartikey
+
+
+app.get('/users', async (req, res) => {
+  try {
+    const filters = req.query; // Extract filters from query params
+    const allUsers = await User.find(filters); // Apply filters dynamically
+    res.status(200).json(allUsers);
+  } catch (error) {
+    return res.status(500).json({ error: 'Cannot find users data' });
+  }
+});
+
+
