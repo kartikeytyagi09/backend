@@ -21,7 +21,7 @@ mongoose.connect(url, {})
 // Basic test route
 app.get('/users/:id', async (req, res) => {
   try {
-    let user = await User.find(req.params.id);
+    let user = await User.find(req.params.id); // req.params is used to get id form the parameter(which is url which user enter);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -35,8 +35,6 @@ app.get('/users/:id', async (req, res) => {
 // POST route to create a new user
 app.post("/user", async (req, res) => {
   try {
-    
-
     // Create and save the user
     const newUser = await User.create(req.body);
 
