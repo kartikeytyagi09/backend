@@ -5,7 +5,7 @@ const URL= require("../models/url_schema");
 async function generateShortUrl(req,res){
     const body= req.body;
     if(!body.url){
-        return res.starus(400).json({msg:"url is required"})
+        return res.status(400).json({msg:"url is required"})
     }
     const shortID= shortid();     
     await URL.create({
