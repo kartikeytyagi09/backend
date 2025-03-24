@@ -16,13 +16,12 @@ app.use(express.json());
 app.use("/url", urlRoute);
 
 app.get("/:shortId", async (req,res)=>{
-    const shortId= rq.params.shortId;
-    const entry= await URL.findOneAndUpdate(
-        {
-            shortId
-        },
-    );
-    res.redirect(entry.redirectURL);
+    const shortId= req.params.shortId;
+    const entry= await URL.findOne({shortId});
+    if(!entry) res.status(404).json({err:"url not found"});
+    res.redirect(entry.redirectUrl)
 });
+
+
 
 app.listen(port,()=> console.log(`server is running at port: ${port}`));
