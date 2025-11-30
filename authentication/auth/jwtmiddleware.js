@@ -23,7 +23,6 @@ function verifyToken(req, res, next){
         const decode= jwt.verify(token, SECRET_KEY);
 
         //It attaches the decoded user info (like id, username) to the req object.it allows middleware/routes to access the user info without decoding the token again.
-
         req.user = decoded;
         next();
     }catch{

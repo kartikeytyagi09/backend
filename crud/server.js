@@ -31,7 +31,6 @@ app.get('/users/:id', async (req, res) => {
   }
 });
 
-
 // POST route to create a new user
 app.post("/user", async (req, res) => {
   try {
